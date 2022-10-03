@@ -1,6 +1,6 @@
 ## UPDATE:
 
-It should be installable via Octopi or with *-$ kcp -i microsoft-edge-stable*   command
+It should be installable via **Octopi** or with ***-$ kcp -i microsoft-edge-stable***  command
 
 
 
