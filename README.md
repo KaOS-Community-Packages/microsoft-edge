@@ -1,3 +1,9 @@
+## UPDATE:
+
+It should be installable via Octopi or with *-$ kcp -i microsoft-edge-stable*   command
+
+
+
 PKGBUILD file requires to run with ***--skipinteg*** option:
 **-$ makepkg PKGBUILD --skipinteg**
 
