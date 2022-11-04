@@ -1,7 +1,7 @@
 pkgname=microsoft-edge-stable
 _pkgname=microsoft-edge-stable-bin
 _pkgshortname=msedge
-pkgver=106.0.1370.34
+pkgver=106.0.1370.34 107.0.1418.35
 pkgrel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
 arch=('x86_64')
