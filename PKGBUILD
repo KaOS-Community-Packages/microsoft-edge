@@ -15,11 +15,11 @@ optdepends=(pipewire kdialog kwallet ttf-liberation xdg-utils)
 options=(!strip !zipman)
 _channel=stable
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/${pkgname}_${pkgver}-1_amd64.deb"
-		"https://raw.githubusercontent.com/KaOS-Community-Packages/microsoft-edge-stable/main/microsoft-edge-stable.sh"
-		"https://github.com/KaOS-Community-Packages/microsoft-edge-stable/raw/main/Microsoft-Standard-Application-License-Terms--Standalone-(free)-Use-Terms.pdf")
+	"https://raw.githubusercontent.com/KaOS-Community-Packages/microsoft-edge-stable/main/microsoft-edge-stable.sh"
+	"https://github.com/KaOS-Community-Packages/microsoft-edge-stable/raw/main/Microsoft-Standard-Application-License-Terms--Standalone-(free)-Use-Terms.pdf")
 sha256sums=('3a8f95f2411949db38b61f2dc5ad2a635b46b8770ea27203cd7c220241180ad9'
-			'dc3765d2de6520b13f105b8001aa0e40291bc9457ac508160b23eea8811e26af'
-			'edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e')
+	    'dc3765d2de6520b13f105b8001aa0e40291bc9457ac508160b23eea8811e26af'
+	    'edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
