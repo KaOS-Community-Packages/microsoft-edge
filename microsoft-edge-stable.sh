@@ -8,8 +8,8 @@ set -e
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
 # Attempt to read a config file if it exists
-if [ -r "${XDG_CONFIG_HOME}/microsoft-edge-stable-flags.conf" ]; then
-  EDGE_USER_FLAGS="$(cat "$XDG_CONFIG_HOME/microsoft-edge-stable-flags.conf")"
+if [ -r "${XDG_CONFIG_HOME}/microsoft-edge-flags.conf" ]; then
+  EDGE_USER_FLAGS="$(cat "$XDG_CONFIG_HOME/microsoft-edge-flags.conf")"
 fi
 
 exec /opt/microsoft/msedge/microsoft-edge $EDGE_USER_FLAGS "$@"
