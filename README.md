@@ -20,7 +20,7 @@ Rebuilt from the ground up using Chromium, the new Microsoft Edge brings you wor
 * Microsoft Defender SmartScreen automatically protects you online from security issues, phishing schemes, and malicious software.
 * Available on all supported versions of Windows, macOS, iOS, and Android.
 
-##### HOME: https://www.microsoft.com/en-us/edge | SOURCE: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/
+##### [HOME](https://www.microsoft.com/en-us/edge) | [SOURCE](https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/)
 #### Install:
 ```
 kcp -i microsoft-edge

@@ -2,7 +2,7 @@ pkgname=microsoft-edge
 _pkgname=microsoft-edge-stable
 __pkgname=microsoft-edge-stable-bin
 _pkgshortname=msedge
-pkgver=118.0.2088.69
+pkgver=119.0.2151.72
 pkgrel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
 arch=('x86_64')
@@ -16,9 +16,7 @@ _channel=stable
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/${_pkgname}_${pkgver}-${pkgrel}_amd64.deb"
         "https://raw.githubusercontent.com/KaOS-Community-Packages/microsoft-edge-stable/main/microsoft-edge-stable.sh"
         "https://github.com/KaOS-Community-Packages/microsoft-edge-stable/raw/main/Microsoft-Standard-Application-License-Terms--Standalone-(free)-Use-Terms.pdf")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
