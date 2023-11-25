@@ -19,7 +19,7 @@ source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-st
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
-	bsdtar -xf data.tar.xz -C "$pkgdir/"
+	bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
 	# suid sandbox
 	chmod 4755 "${pkgdir}/opt/microsoft/${_pkgshortname}/msedge-sandbox"
