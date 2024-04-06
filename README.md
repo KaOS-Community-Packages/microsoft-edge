@@ -1,8 +1,12 @@
 # Microsoft Edge
+
+<h3 align="center">
+[HOME](https://www.microsoft.com/en-us/edge) | [SOURCE](https://packages.microsoft.com/yumrepos/edge/Packages/m/)
+
 A proprietary web browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier; based on Chromium; made by Microsoft
 Rebuilt from the ground up using Chromium, the new Microsoft Edge brings you world-class compatibility and performance, the security and privacy you deserve, and new features designed to bring you the best of the web.
 
-##### Features:
+### Features:
 * Inking -- an annotation tool that allows users to write or draw on Web pages.
 * Cortana -- a personal virtual assistant from Halo, a popular video game.
 * Private browsing.
@@ -20,7 +24,7 @@ Rebuilt from the ground up using Chromium, the new Microsoft Edge brings you wor
 * Microsoft Defender SmartScreen automatically protects you online from security issues, phishing schemes, and malicious software.
 * Available on all supported versions of Windows, macOS, iOS, and Android.
 
-##### [HOME](https://www.microsoft.com/en-us/edge) | [SOURCE](https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/)
+
 #### Install:
 ```
 kcp -i microsoft-edge

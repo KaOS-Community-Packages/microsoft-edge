@@ -1,8 +1,7 @@
 pkgname=microsoft-edge
 _pkgname=microsoft-edge-stable
-__pkgname=microsoft-edge-stable-bin
-_pkgshortname=msedge
-pkgver=120.0.2210.77
+__pkgname=msedge
+pkgver=123.0.2420.81
 pkgrel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
 arch=('x86_64')
@@ -11,42 +10,38 @@ license=('custom')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxtst' 'libdrm' 'mesa')
 makedepends=('imagemagick')
 optdepends=('pipewire' 'kdialog' 'kwallet' 'ttf-liberation' 'xdg-utils')
-options=(!strip !zipman)
-_channel=stable
-source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/${_pkgname}_${pkgver}-${pkgrel}_amd64.deb"
-        "https://raw.githubusercontent.com/KaOS-Community-Packages/microsoft-edge-stable/main/microsoft-edge-stable.sh"
-        "https://github.com/KaOS-Community-Packages/microsoft-edge-stable/raw/main/Microsoft-Standard-Application-License-Terms--Standalone-(free)-Use-Terms.pdf")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+options=('!strip' '!zipman')
+install="${pkgname}.install"
+source=("${_pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://packages.microsoft.com/yumrepos/edge/Packages/m/${_pkgname}-${pkgver}-${pkgrel}.x86_64.rpm"
+        "Microsoft-Standard-Application-License-Terms--Standalone-(free)-Use-Terms.pdf::https://github.com/KaOS-Community-Packages/microsoft-edge-stable/raw/main/Microsoft-Standard-Application-License-Terms--Standalone-(free)-Use-Terms.pdf")
+sha256sums=('SKIP' 'SKIP')
 
 package() {
-	bsdtar -xf "data.tar.xz" -C "${pkgdir}/"
+	msg2 "Unpacking SOURCE files of the downloaded RMP binary package "
+	mkdir -p "${pkgdir}/"
+	bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${pkgrel}.x86_64.rpm" -C "${pkgdir}/"
 
-	# suid sandbox
-	chmod 4755 "${pkgdir}/opt/microsoft/${_pkgshortname}/msedge-sandbox"
+	msg2 "Removing unnecessary file properties from the RPM binary package"
+	rm -fdrv "${pkgdir}/"{etc/,usr/bin/}
 
-	# 256 and 24 are proper colored icons
-	for res in 128 64 48 32; do
-		convert "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_256.png" \
-			-resize ${res}x${res} \
-			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png"
-	done
-	for res in 22 16; do
-		convert "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_24.png" \
-			-resize ${res}x${res} \
-			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png"
-	done
+	msg2 "Installing Microsoft Edge proprietary LICENSE into the system"
+	install -Dm644 "${srcdir}/Microsoft-Standard-Application-License-Terms--Standalone-(free)-Use-Terms.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.pdf"
 
-	# install icons
-	for res in 16 22 24 32 48 64 128 256; do
-		install -Dm644 "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png" \
-			"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png"
-	done
-       # User flag aware launcher
-       install -m755 "./microsoft-edge-stable.sh" "${pkgdir}/usr/bin/${pkgname}"
+	msg2 "Copying thumbnail from source to the system"
+	mkdir -p "${pkgdir}/usr/share/pixmaps/"
+	cp -av "${pkgdir}/opt/microsoft/${__pkgname}/product_logo_256.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-	# License
-	install -Dm644 "Microsoft-Standard-Application-License-Terms--Standalone-(free)-Use-Terms.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.pdf"
-	rm -fr "${pkgdir}/etc/cron.daily/" "${pkgdir}/opt/microsoft/${_pkgshortname}/cron/"
-	# Globbing seems not to work inside double parenthesis
-	rm -fr "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_*.png"
+	msg2 "Linking thumbnail from source to the system"
+	mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
+	ln -sv "/opt/microsoft/${__pkgname}/product_logo_256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+
+	msg2 "Linking runable binary file from source to the system"
+	mkdir -p "${pkgdir}/usr/bin/"
+	ln -sv "/opt/microsoft/${__pkgname}/${__pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	# SUID SandBox
+	msg2 "Impose sandboxing by modifying SUID properties"
+	chmod 4755 -v "${pkgdir}/opt/microsoft/${__pkgname}/${__pkgname}-sandbox"
+
+	msg2 "Done"
 }
