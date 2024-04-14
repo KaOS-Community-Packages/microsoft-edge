@@ -1,7 +1,6 @@
 # Microsoft Edge (MS-Edge)
 
-<h3 align="center">
-[HOME](https://www.microsoft.com/en-us/edge) | [SOURCE](https://packages.microsoft.com/yumrepos/edge/Packages/m/)
+### [HOME](https://www.microsoft.com/en-us/edge) | [SOURCE](https://packages.microsoft.com/yumrepos/edge/Packages/m/)
 
 ___
 
