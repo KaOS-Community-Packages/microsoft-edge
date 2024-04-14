@@ -14,7 +14,7 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     note "Custom flags should be put directly in: ~/.config/microsoft-edge-flags.conf"
-    note "The launcher is called: 'microsoft-edge'"
+    note "The launcher is called: 'microsoft-edge-stable'"
 }
 
 post_upgrade() {
